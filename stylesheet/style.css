@@ -1,9 +1,59 @@
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 *,
 *::after,
 *::before {
   box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid black;
+}
+@media screen and (max-width: 480px) {
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+header h1, header button {
+  margin: 2rem;  
+}
+
+header button {
+  padding: 1rem;
+  font-size: large;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+main button {
+  margin: 2rem;
+  padding: 2rem;
+  font-size: xx-large;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 1.2rem;
 }
