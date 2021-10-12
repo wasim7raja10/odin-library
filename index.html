@@ -16,9 +16,30 @@
   </header>
 
   <main>
-    <button>Add Book</button>
+    <button class="add-book">Add Book</button>
+    <div class="add-book-modal">
+      <form action="">
+        <span class="close">&times;</span>
+        <h2>Add New Book</h2>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title"><br>
+
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author"><br>
+
+        <label for="num-of-pages">Number of pages</label>
+        <input type="number" name="num-of-pages" id="num-of-pages"><br>
+
+        <div>
+          <label for="is-read">Is read ?</label>
+          <input type="checkbox" name="is-read" id="is-read">
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   </main>
-  
+
   <footer>
     <p>Copyright © 2021 Wasim</p>
     <a href="https://github.com/wasim7raja10/odin-library">
