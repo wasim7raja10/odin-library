@@ -86,3 +86,13 @@ form button {
   align-self: flex-end;
   cursor: default;
 }
+
+/* table */
+
+table {
+  table-layout: fixed;
+  width: 90%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+  margin: 0 auto;
+}

@@ -2,6 +2,7 @@ const modal = document.querySelector('.add-book-modal');
 const addBookBtn = document.querySelector('.add-book');
 const closeBtn = document.querySelector('.close');
 const form = document.querySelector('form');
+const table = document.querySelector('tbody');
 
 // add book modal 
 function modalOpen() {
@@ -29,6 +30,18 @@ function Book(title, author, pageNum, isRead) {
   this.isRead = isRead;
 }
 
+// display records
+function display() {
+  const newRow = document.createElement('tr');
+  newRow.innerHTML = `
+    <td>${myLibrary[myLibrary.length-1].title}</td>
+    <td>${myLibrary[myLibrary.length-1].author}</td>
+    <td>${myLibrary[myLibrary.length-1].pageNum}</td>
+    <td>${myLibrary[myLibrary.length-1].isRead}</td>`
+
+  table.appendChild(newRow);
+}
+
 // function - adding book to library
 function addBookToLibrary(e) {
   e.preventDefault();
@@ -37,6 +50,7 @@ function addBookToLibrary(e) {
   )
   console.log(myLibrary)
   modalClose();
+  display();
 }
 
 form.addEventListener('submit', addBookToLibrary);
