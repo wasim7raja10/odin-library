@@ -10,7 +10,11 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 0;
+  height: 100%;
 }
 
 header {
@@ -53,11 +57,9 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   font-size: 1.2rem;
+  background-color: aqua;
+  margin-top: 2rem;
 }
 
 form {
@@ -95,4 +97,47 @@ table {
   border-collapse: collapse;
   border: 3px solid purple;
   margin: 0 auto;
+}
+
+
+thead th:nth-child(1) {
+  width: 5%;
+}
+
+thead th:nth-child(2) {
+  width: 30%;
+}
+
+thead th:nth-child(3) {
+  width: 30%;
+}
+
+thead th:nth-child(4) {
+  width: 15%;
+}
+
+th, td {
+  padding: 20px;
+}
+
+
+thead th {
+  font-family: 'Rock Salt', cursive;
+  font-size: xx-large;
+}
+
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+caption {
+  font-size: 2rem;
+}
+
+tbody td {
+  text-align: center;
 }

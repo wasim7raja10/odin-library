@@ -12,7 +12,7 @@ function modalOpen() {
 
 function modalClose() {
   modal.setAttribute("style", "display: none")
-  form.reset();
+  // form.reset();  
   addBookBtn.setAttribute("style", "display: block")
 }
 
@@ -34,11 +34,11 @@ function Book(title, author, pageNum, isRead) {
 function display() {
   const newRow = document.createElement('tr');
   newRow.innerHTML = `
+    <td><button data-index="${myLibrary.length-1}" class="removeBtn">Remove</button></td>
     <td>${myLibrary[myLibrary.length-1].title}</td>
     <td>${myLibrary[myLibrary.length-1].author}</td>
     <td>${myLibrary[myLibrary.length-1].pageNum}</td>
-    <td>${myLibrary[myLibrary.length-1].isRead}</td>`
-
+    <td>${myLibrary[myLibrary.length-1].isRead ? "Yes" : "No"}</td>`
   table.appendChild(newRow);
 }
 
@@ -53,4 +53,15 @@ function addBookToLibrary(e) {
   display();
 }
 
+// function - removing book from library
+function removeBook(e) {
+  e.target.parentElement.parentElement.remove();
+  myLibrary.splice(+e.target.getAttribute("data-index"), 1);
+  const removeBtn = document.querySelectorAll('.removeBtn');
+  for (let i = 0; i < removeBtn.length; i++) {
+    removeBtn[i].setAttribute('data-index', i);
+  }
+}
+
 form.addEventListener('submit', addBookToLibrary);
+table.addEventListener('click', removeBook);
