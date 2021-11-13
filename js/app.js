@@ -21,7 +21,7 @@ function modalOpen() {
 
 function modalClose() {
   modal.setAttribute("style", "display: none")
-  form.reset();  
+  form.reset();
   addBookBtn.setAttribute("style", "display: block")
 }
 
@@ -38,15 +38,20 @@ function Book(title, author, pageNum, isRead) {
 
 // display locally saved book
 function displayLocalBook() {
+  let i = 0;
   myLibrary.forEach(book => {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
-      <td><button data-index="${myLibrary.length-1}" class="removeBtn">Remove</button></td>
+      <td><button data-index="${i}" class="removeBtn">&times</button></td>
       <td>${book.title}</td>
       <td>${book.author}</td>
       <td>${book.pageNum}</td>
-      <td>${book.isRead ? "Yes" : "No"}</td>`
+      <td>
+        <span>${book.isRead ? "Yes" : "No"} </span>
+        <input data-index="${i}" type="checkbox" class="read" ${book.isRead ? "checked": ""}>
+      </td>`
     table.appendChild(newRow);
+    i++;
   });
 }
 
@@ -54,11 +59,14 @@ function displayLocalBook() {
 function display() {
   const newRow = document.createElement('tr');
   newRow.innerHTML = `
-    <td><button data-index="${myLibrary.length-1}" class="removeBtn">Remove</button></td>
+    <td><button data-index="${myLibrary.length-1}" class="removeBtn">&times</button></td>
     <td>${myLibrary[myLibrary.length-1].title}</td>
     <td>${myLibrary[myLibrary.length-1].author}</td>
     <td>${myLibrary[myLibrary.length-1].pageNum}</td>
-    <td>${myLibrary[myLibrary.length-1].isRead ? "Yes" : "No"}</td>`
+    <td>
+      <span>${myLibrary[myLibrary.length-1].isRead ? "Yes" : "No"}</span>
+      <input data-index="${myLibrary.length-1}" type="checkbox" class="read" ${myLibrary[myLibrary.length-1].isRead ? "checked" : "" }>
+    </td>`
   table.appendChild(newRow);
 }
 
@@ -75,14 +83,28 @@ function addBookToLibrary(e) {
 
 // function - removing book from library
 function removeBook(e) {
-  e.target.parentElement.parentElement.remove();
-  myLibrary.splice(+e.target.getAttribute("data-index"), 1);
-  const removeBtn = document.querySelectorAll('.removeBtn');
-  for (let i = 0; i < removeBtn.length; i++) {
-    removeBtn[i].setAttribute('data-index', i);
+  if (e.target.classList.contains('removeBtn')) {
+    e.target.parentElement.parentElement.remove();
+    const index = +e.target.getAttribute("data-index");
+    myLibrary.splice(index, 1);
+    const removeBtn = document.querySelectorAll('.removeBtn');
+    for (let i = 0; i < removeBtn.length; i++) {
+      removeBtn[i].setAttribute('data-index', i);
+    }
+    localStorage.setItem('library', JSON.stringify(myLibrary))
   }
-  localStorage.setItem('library', JSON.stringify(myLibrary))
+}
+
+function readBook(e) {
+  if (e.target.classList.contains('read')) {
+    const index = +e.target.getAttribute("data-index");
+    myLibrary[index].isRead = !(myLibrary[index].isRead);
+    e.target.previousElementSibling.innerText =
+      `${myLibrary[index].isRead ? "Yes" : "No"}`
+    localStorage.setItem('library', JSON.stringify(myLibrary))
+  }
 }
 
 form.addEventListener('submit', addBookToLibrary);
 table.addEventListener('click', removeBook);
+table.addEventListener('click', readBook);
