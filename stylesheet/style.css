@@ -131,6 +131,7 @@ table {
 
 .data {
   overflow-x: auto;
+  margin: 0 8px;
 }
 
 .removeBtn {
@@ -163,7 +164,8 @@ thead th:nth-child(5) {
   min-width: min-content;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
 }
 
