@@ -1,5 +1,5 @@
 // book holder
-let myLibrary;
+let myLibrary = [];
 
 const modal = document.querySelector(".add-book-modal");
 const addBookBtn = document.querySelector(".add-book");
@@ -10,9 +10,8 @@ const table = document.querySelector("tbody");
 if (localStorage.getItem("library")) {
   myLibrary = JSON.parse(localStorage.getItem("library"));
   displayLocalBook();
-} else {
-  myLibrary = [];
 }
+
 // add book modal
 function modalOpen() {
   modal.setAttribute("style", "display:block");
@@ -75,13 +74,17 @@ function display() {
   table.appendChild(newRow);
 }
 
+function saveLocally(itemName, item) {
+  localStorage.setItem(itemName, JSON.stringify(item));
+}
+
 // function - adding book to library
 function addBookToLibrary(e) {
   e.preventDefault();
   myLibrary.push(
     new Book(form[0].value, form[1].value, form[2].value, form[3].checked)
   );
-  localStorage.setItem("library", JSON.stringify(myLibrary));
+  saveLocally("library", myLibrary);
   modalClose();
   display();
 }
@@ -96,7 +99,7 @@ function removeBook(e) {
     for (let i = 0; i < removeBtn.length; i++) {
       removeBtn[i].setAttribute("data-index", i);
     }
-    localStorage.setItem("library", JSON.stringify(myLibrary));
+    saveLocally("library", myLibrary);
   }
 }
 
@@ -107,7 +110,7 @@ function readBook(e) {
     e.target.previousElementSibling.innerText = `${
       myLibrary[index].isRead ? "Yes" : "No"
     }`;
-    localStorage.setItem("library", JSON.stringify(myLibrary));
+    saveLocally("library", myLibrary);
   }
 }
 
