@@ -35,7 +35,7 @@ header button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -129,9 +129,15 @@ table {
   color: whitesmoke;
 }
 
+table caption {
+  color: purple;
+  font-size: xx-large;
+  font-weight: 600;
+}
+
 .data {
   overflow-x: auto;
-  margin: 0 8px;
+  margin: 0 8px 4rem;
 }
 
 .removeBtn {
@@ -181,18 +187,8 @@ tbody td {
   text-align: center;
 }
 
-
-
-tbody tr:nth-child(odd) {
-  background-color: #ff33cc;
-}
-
 tbody tr:nth-child(even) {
   background-color: #e495e4;
-}
-
-tbody tr {
-  background-image: url(noise.png);
 }
 
 table {
