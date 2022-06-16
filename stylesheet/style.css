@@ -1,134 +1,170 @@
 html {
   box-sizing: border-box;
-  height: 100%;
 }
 
 *,
 *::after,
 *::before {
   box-sizing: inherit;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   margin: 0;
-  height: 100%;
+  padding: 0;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid black;
 }
 
-@media screen and (max-width: 480px) {
-  header {
-    display: flex;
-    flex-direction: column;
-  }
-}
+/* header */
 
-header h1,
-header button {
-  margin: 2rem;
+header h1 {
+  color: rebeccapurple;
+  margin: 4px;
 }
 
 header button {
-  padding: 1rem;
-  font-size: large;
+  background-color: purple;
+  /* Green */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 6px 15px;
+  margin: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* main */
+
+main button {
+  background-color: purple;
+  /* Green */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 8px 15px;
+  margin: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 main {
   display: flex;
   justify-content: center;
+  margin: 1rem;
 }
 
-.add-book {
-  margin: 2rem;
-  padding: 40px 20px;
+main .add-book-modal {
+  display: none;
+  background-color: teal;
+  width: 370px;
+  position: fixed;
+  padding: 2rem;
+  border-radius: 6px;
+  color: whitesmoke;
+}
+
+main .close {
   font-size: xx-large;
+  cursor: pointer;
+  color: aliceblue;
 }
 
-footer {
+.add-book-modal .form-heading {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  font-size: 1.2rem;
-  background-color: aqua;
-  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
-form {
+main form {
   display: flex;
   flex-direction: column;
-  max-width: 500px;
-  background-color: aqua;
-  padding: 2rem;
-  border-radius: 10px;
-  gap: 3px;
+  gap: 8px;
 }
 
-form button {
-  padding: 0.5rem 1rem;
-  align-self: center;
+main .form-div {
+  display: flex;
+  flex-direction: column;
 }
 
-.add-book-modal {
-  display: none;
+form input {
+  padding: 4px
+}
+
+/* footer */
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
   justify-content: center;
-  width: 400px;
-  margin: 2rem;
+  background-color: aqua;
+  align-items: center;
+  padding: 0.5rem;
+  width: 100%;
 }
 
-.close {
-  align-self: flex-end;
-  cursor: default;
-  font-size: 32px;
+footer p {
+  margin: 0 10px;
 }
 
-/* table */
+/* Table */
 
 table {
   table-layout: fixed;
-  width: 90%;
+  width: 100%;
+  min-width: 700px;
   border-collapse: collapse;
   border: 3px solid purple;
-  margin: 0 auto;
+  color: whitesmoke;
 }
 
+.data {
+  overflow-x: auto;
+}
+
+.removeBtn {
+  padding: 0 6px;
+}
+
+thead {
+  background-color: gray;
+}
 
 thead th:nth-child(1) {
-  width: 5%;
+  width: 10%;
 }
 
 thead th:nth-child(2) {
-  width: 20%;
+  width: 30%;
 }
 
 thead th:nth-child(3) {
-  width: 20%;
+  width: 30%;
 }
 
 thead th:nth-child(4) {
   width: 15%;
+  min-width: min-content;
 }
 
 thead th:nth-child(5) {
   width: 15%;
+  min-width: min-content;
 }
 
 th, td {
-  padding: 20px;
-}
-
-
-thead th {
-  font-family: 'Rock Salt', cursive;
-  font-size: xx-large;
+  padding: 10px;
 }
 
 th {
@@ -139,10 +175,24 @@ td {
   letter-spacing: 1px;
 }
 
-caption {
-  font-size: 2rem;
-}
-
 tbody td {
   text-align: center;
+}
+
+
+
+tbody tr:nth-child(odd) {
+  background-color: #ff33cc;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e495e4;
+}
+
+tbody tr {
+  background-image: url(noise.png);
+}
+
+table {
+  background-color: #ff33cc;
 }

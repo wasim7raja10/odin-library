@@ -20,17 +20,26 @@
 
     <!-- add book modal -->
     <div class="add-book-modal">
-      <form action="">
-        <span class="close">&times;</span>
+      <div class="form-heading">
         <h2>Add New Book</h2>
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title">
+        <span class="close">&times;</span>
+      </div>
 
-        <label for="author">Author</label>
-        <input type="text" name="author" id="author">
+      <form action="">
+        <div class="form-div">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title">
+        </div>
 
-        <label for="num-of-pages">Number of pages</label>
-        <input type="number" name="num-of-pages" id="num-of-pages">
+        <div class="form-div">
+          <label for="author">Author</label>
+          <input type="text" name="author" id="author">
+        </div>
+
+        <div class="form-div">
+          <label for="num-of-pages">Number of pages</label>
+          <input type="number" name="num-of-pages" id="num-of-pages">
+        </div>
 
         <div>
           <label for="is-read">Is read ?</label>
@@ -42,20 +51,22 @@
   </main>
 
   <!-- table -->
-  <table border="1">
-    <caption>Book Record</caption>
-    <thead>
-      <tr>
-        <th></th>
-        <th>Title</th>
-        <th>Author</th>
-        <th># Pages</th>
-        <th>Read ?</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
+  <div class="data">
+    <table>
+      <caption>Book Record</caption>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Author</th>
+          <th># Pages</th>
+          <th>Read?</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
 
   <footer>
     <p>Copyright © 2021 Wasim</p>
