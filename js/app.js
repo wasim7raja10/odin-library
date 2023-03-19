@@ -35,11 +35,10 @@ function Book(title, author, pageNum, isRead) {
 
 // display locally saved book
 function displayLocalBook() {
-  let i = 0;
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-      <td><button data-index="${i}" class="removeBtn">&times</button></td>
+      <td><button data-index="${index}" class="removeBtn">&times</button></td>
       <th scope='row'>${book.title}</th>
       <td>${book.author}</td>
       <td>${book.pageNum}</td>
@@ -49,7 +48,6 @@ function displayLocalBook() {
           ${book.isRead ? "checked" : ""}>
       </td>`;
     table.appendChild(newRow);
-    i++;
   });
 }
 
